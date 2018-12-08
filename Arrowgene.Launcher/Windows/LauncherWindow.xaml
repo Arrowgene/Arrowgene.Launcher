@@ -1,0 +1,81 @@
+﻿<Window x:Class="Arrowgene.Launcher.Windows.LauncherWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="LauncherWindow" 
+		SizeToContent="Height" 
+		MinWidth="300" 
+		Width="300" 
+        WindowStyle="None"
+        ResizeMode="NoResize">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../ControlTemplates/ButtonStyle.xaml"/>
+                <ResourceDictionary Source="../ControlTemplates/GameButtonStyle.xaml"/>
+                <ResourceDictionary Source="../ControlTemplates/ComboBoxStyle.xaml"/>
+                <ResourceDictionary Source="../ControlTemplates/ListBoxStyle.xaml"/>
+                <ResourceDictionary Source="../ControlTemplates/CheckBoxStyle.xaml"/>
+                <ResourceDictionary Source="../ControlTemplates/TextBoxStyle.xaml"/>
+                <ResourceDictionary Source="../ControlTemplates/ProgressBarStyle.xaml"/>
+                <ResourceDictionary Source="../ControlTemplates/LabelStyle.xaml"/>
+                <ResourceDictionary Source="../ControlTemplates/BackgroundAnimation/AnimationResource.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Image Grid.RowSpan="15" Stretch="Fill">
+            <Image.Triggers>
+                <EventTrigger RoutedEvent="Image.Loaded">
+                    <BeginStoryboard Storyboard="{StaticResource StoryboardBackground}">
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Image.Triggers>
+        </Image>
+        <StackPanel Grid.Row="1" x:Name="stackPanelGames" Orientation="Horizontal" HorizontalAlignment="Center"/>
+        <Button Grid.Row="2" x:Name="buttonStart" Content="Start" Style="{StaticResource CustomButtonStyle}"/>
+        <CheckBox Grid.Row="3" x:Name="checkBoxRememberLogin" Content="Remember Login" Style="{StaticResource CustomCheckBoxStyle}"/>
+        <TextBox Grid.Row="4" x:Name="textBoxAccount" Style="{StaticResource CustomTextBoxStyle}"/>
+        <PasswordBox Grid.Row="5" x:Name="passwordBoxPassword" Style="{StaticResource CustomPasswordBoxStyle}"/>
+        <StackPanel Grid.Row="6" Orientation="Horizontal">
+            <Label Content="Path:" Style="{StaticResource CustomLabelStyle}"/>
+            <Label x:Name="labelGamePath" Content="-" Style="{StaticResource CustomLabelStyle}"/>
+        </StackPanel>
+        <StackPanel Grid.Row="7" Orientation="Horizontal">
+            <Label Content="Client Version:" Style="{StaticResource CustomLabelStyle}"/>
+            <Label x:Name="labelClientVersion" Content="-" Style="{StaticResource CustomLabelStyle}"/>
+            <Label Content="Latest:" Style="{StaticResource CustomLabelStyle}"/>
+            <Label x:Name="labelLatestClientVersion" Content="-" Style="{StaticResource CustomLabelStyle}"/>
+        </StackPanel>
+        <Button Grid.Row="8" x:Name="buttonSetGameLocation" Content="Set Game Location" Style="{StaticResource CustomButtonStyle}"/>
+        <Button Grid.Row="9" x:Name="buttonDownloadClient" Content="Download Client" Style="{StaticResource CustomButtonStyle}"/>
+        <Button Grid.Row="10" x:Name="buttonCheckUpdates" Content="Check for Updates" Style="{StaticResource CustomButtonStyle}"/>
+        <ProgressBar Grid.Row="11" x:Name="progressBarDownload" VerticalAlignment="Center" Style="{StaticResource CustomProgressBarStyle}"/>
+        <Label Grid.Row="11" x:Name="labelStatus" Content="Status" Padding="4,0,4,0" VerticalAlignment="Center" Style="{StaticResource CustomLabelStyle}"/>
+        <Button Grid.Row="12" x:Name="buttonClose" Content="Close" Style="{StaticResource CustomButtonStyle}"/>
+        <StackPanel Grid.Row="13"  Margin="5,0,5,0" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+            <Label Content="v." Style="{StaticResource CustomLabelStyle}" Margin="5,2,0,2" Padding="0"/>
+            <Label x:Name="labelLauncherVersion" Content="-" Style="{StaticResource CustomLabelStyle}" Margin="0,2,0,2" Padding="0"/>
+        </StackPanel>
+        <Label Grid.Row="13" x:Name="labelWebsite" Content="http://www.arrowgene.net" Cursor="Hand" HorizontalAlignment="Center" Style="{StaticResource CustomLabelStyle}"/>
+    </Grid>
+</Window>

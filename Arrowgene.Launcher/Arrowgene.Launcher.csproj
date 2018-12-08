@@ -1,0 +1,261 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{796318F7-2762-4DF3-909E-E6C074C7B8C3}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Arrowgene.Launcher</RootNamespace>
+    <AssemblyName>Arrowgene.Launcher</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Arrowgene.Launcher.App</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>app.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="ControlTemplates\BackgroundAnimation\AnimationResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlTemplates\GameButtonStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlTemplates\ProgressBarStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlTemplates\TextBlockStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlTemplates\LabelStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlTemplates\TextBoxStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlTemplates\CheckBoxStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlTemplates\ListBoxStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlTemplates\ComboBoxStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ControlTemplates\ButtonStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\DialogBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\LauncherWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="Api\ApiResponse.cs" />
+    <Compile Include="Api\ApiVersion.cs" />
+    <Compile Include="Common\KeyValue.cs" />
+    <Compile Include="Game\Ez2On\Ez2OnPatcher.cs" />
+    <Compile Include="Game\GamePatcher.cs" />
+    <Compile Include="Game\GamePatch.cs" />
+    <Compile Include="Game\GameType.cs" />
+    <Compile Include="Api\ArrowgeneApi.cs" />
+    <Compile Include="Download\Downloader.cs" />
+    <Compile Include="Core\ExitCodes.cs" />
+    <Compile Include="Core\Configuration.cs" />
+    <Compile Include="Core\LauncherController.cs" />
+    <Compile Include="Game\Dance\DanceGame.cs" />
+    <Compile Include="Game\Ez2On\Ez2OnGame.cs" />
+    <Compile Include="Game\GameBase.cs" />
+    <Compile Include="Game\SelectedGameEventArgs.cs" />
+    <Compile Include="Http\AsyncHttpResponseEventArgs.cs" />
+    <Compile Include="Http\HttpRequest.cs" />
+    <Compile Include="App.cs" />
+    <Compile Include="Core\Logger.cs" />
+    <Compile Include="Http\HttpRequestErrorArgs.cs" />
+    <Compile Include="Http\HttpRequestProgressArgs.cs" />
+    <Compile Include="Json\JsonSerializer.cs" />
+    <Compile Include="Ini\Config\AliasText.cs" />
+    <Compile Include="Ini\Config\ArgvConfigSource.cs" />
+    <Compile Include="Ini\Config\ConfigBase.cs" />
+    <Compile Include="Ini\Config\ConfigCollection.cs" />
+    <Compile Include="Ini\Config\ConfigSourceBase.cs" />
+    <Compile Include="Ini\Config\DotNetConfigSource.cs" />
+    <Compile Include="Ini\Config\IConfig.cs" />
+    <Compile Include="Ini\Config\IConfigSource.cs" />
+    <Compile Include="Ini\Config\IniConfig.cs" />
+    <Compile Include="Ini\Config\IniConfigSource.cs" />
+    <Compile Include="Ini\Config\RegistryConfigSource.cs" />
+    <Compile Include="Ini\Config\XmlConfigSource.cs" />
+    <Compile Include="Ini\Ini\IniDocument.cs" />
+    <Compile Include="Ini\Ini\IniException.cs" />
+    <Compile Include="Ini\Ini\IniItem.cs" />
+    <Compile Include="Ini\Ini\IniReader.cs" />
+    <Compile Include="Ini\Ini\IniSection.cs" />
+    <Compile Include="Ini\Ini\IniSectionCollection.cs" />
+    <Compile Include="Ini\Ini\IniWriter.cs" />
+    <Compile Include="Ini\Util\ArgvParser.cs" />
+    <Compile Include="Ini\Util\OrderedList.cs" />
+    <Compile Include="Ini\Util\OrderedListEnumerator.cs" />
+    <Compile Include="Windows\DialogBox.xaml.cs">
+      <DependentUpon>DialogBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\ILauncherWindow.cs" />
+    <Compile Include="Windows\LauncherWindow.xaml.cs">
+      <DependentUpon>LauncherWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="app.manifest">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="dance.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ez2on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ControlTemplates\BackgroundAnimation\01.bmp" />
+    <Resource Include="ControlTemplates\BackgroundAnimation\02.bmp" />
+    <Resource Include="ControlTemplates\BackgroundAnimation\03.bmp" />
+    <Resource Include="ControlTemplates\BackgroundAnimation\04.bmp" />
+    <Resource Include="ControlTemplates\BackgroundAnimation\05.bmp" />
+    <Resource Include="ControlTemplates\BackgroundAnimation\06.bmp" />
+    <Resource Include="ControlTemplates\BackgroundAnimation\07.bmp" />
+    <Resource Include="ControlTemplates\BackgroundAnimation\08.bmp" />
+    <Resource Include="ControlTemplates\BackgroundAnimation\09.bmp" />
+    <Resource Include="ControlTemplates\BackgroundAnimation\10.bmp" />
+    <Resource Include="ControlTemplates\BackgroundAnimation\11.bmp" />
+    <Resource Include="ControlTemplates\BackgroundAnimation\12.bmp" />
+    <Resource Include="ControlTemplates\BackgroundAnimation\13.bmp" />
+    <Resource Include="ControlTemplates\BackgroundAnimation\14.bmp" />
+    <Resource Include="ControlTemplates\BackgroundAnimation\15.bmp" />
+    <Resource Include="ControlTemplates\BackgroundAnimation\16.bmp" />
+    <Resource Include="ControlTemplates\BackgroundAnimation\17.bmp" />
+    <Resource Include="ControlTemplates\BackgroundAnimation\18.bmp" />
+    <Resource Include="ControlTemplates\BackgroundAnimation\19.bmp" />
+    <Resource Include="ControlTemplates\BackgroundAnimation\20.bmp" />
+    <Resource Include="ControlTemplates\BackgroundAnimation\21.bmp" />
+    <Resource Include="ControlTemplates\BackgroundAnimation\22.bmp" />
+    <Resource Include="ControlTemplates\BackgroundAnimation\23.bmp" />
+    <Resource Include="ControlTemplates\BackgroundAnimation\24.bmp" />
+    <Resource Include="ControlTemplates\BackgroundAnimation\25.bmp" />
+    <Resource Include="ControlTemplates\BackgroundAnimation\26.bmp" />
+    <Resource Include="ControlTemplates\BackgroundAnimation\27.bmp" />
+    <Resource Include="ControlTemplates\BackgroundAnimation\28.bmp" />
+    <Resource Include="ControlTemplates\BackgroundAnimation\29.bmp" />
+    <Resource Include="ControlTemplates\BackgroundAnimation\30.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="app.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

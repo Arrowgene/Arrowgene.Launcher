@@ -1,0 +1,40 @@
+﻿<Window x:Class="Arrowgene.Launcher.Windows.DialogBox"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Arrowgene.Launcher.Windows"
+        mc:Ignorable="d"
+        Title="DialogBox" 
+		SizeToContent="Height" 
+		MinHeight="100" 
+		MinWidth="300" 
+		Width="300" 
+		WindowStartupLocation="CenterOwner" 
+		WindowStyle="None"
+		MouseDown="Window_MouseDown">
+	<Window.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="../ControlTemplates/ButtonStyle.xaml"/>
+				<ResourceDictionary Source="../ControlTemplates/TextBlockStyle.xaml"/>
+				<ResourceDictionary Source="../ControlTemplates/LabelStyle.xaml"/>
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</Window.Resources>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto" />
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*"/>
+		</Grid.ColumnDefinitions>
+		<Label Grid.Row="0" x:Name="labelTitle" Content="Title" HorizontalContentAlignment="Center" Style="{StaticResource CustomLabelStyle}" />
+		<TextBlock Grid.Row="1" x:Name="textBlockMessage" Text="Message" TextWrapping="Wrap" Style="{StaticResource CustomTextBlockStyle}" />
+		<Button Grid.Row="2" x:Name="buttonYes" Content="Yes"  Click="buttonYes_Click" Style="{StaticResource CustomButtonStyle}"/>
+		<Button Grid.Row="3" x:Name="buttonNo" Content="No"  Click="buttonNo_Click" Style="{StaticResource CustomButtonStyle}"/>
+	</Grid>
+</Window>

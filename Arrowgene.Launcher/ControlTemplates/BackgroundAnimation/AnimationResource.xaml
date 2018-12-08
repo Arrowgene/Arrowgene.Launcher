@@ -1,0 +1,158 @@
+<ResourceDictionary
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Storyboard  x:Key="StoryboardBackground" x:Shared="False" RepeatBehavior="Forever">
+        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Source" Duration="0:0:1">
+            <DiscreteObjectKeyFrame KeyTime="0:0:0">
+                <DiscreteObjectKeyFrame.Value>
+                    <BitmapImage UriSource="/ControlTemplates/BackgroundAnimation/01.bmp"/>
+                </DiscreteObjectKeyFrame.Value>
+            </DiscreteObjectKeyFrame>
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.0333333">
+                <DiscreteObjectKeyFrame.Value>
+                    <BitmapImage UriSource="/ControlTemplates/BackgroundAnimation/02.bmp"/>
+                </DiscreteObjectKeyFrame.Value>
+            </DiscreteObjectKeyFrame>
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.0666666">
+                <DiscreteObjectKeyFrame.Value>
+                    <BitmapImage UriSource="/ControlTemplates/BackgroundAnimation/03.bmp"/>
+                </DiscreteObjectKeyFrame.Value>
+            </DiscreteObjectKeyFrame>
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.0999999">
+                <DiscreteObjectKeyFrame.Value>
+                    <BitmapImage UriSource="/ControlTemplates/BackgroundAnimation/04.bmp"/>
+                </DiscreteObjectKeyFrame.Value>
+            </DiscreteObjectKeyFrame>
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.1333333">
+                <DiscreteObjectKeyFrame.Value>
+                    <BitmapImage UriSource="/ControlTemplates/BackgroundAnimation/05.bmp"/>
+                </DiscreteObjectKeyFrame.Value>
+            </DiscreteObjectKeyFrame>
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.1666666">
+                <DiscreteObjectKeyFrame.Value>
+                    <BitmapImage UriSource="/ControlTemplates/BackgroundAnimation/06.bmp"/>
+                </DiscreteObjectKeyFrame.Value>
+            </DiscreteObjectKeyFrame>
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.1999999">
+                <DiscreteObjectKeyFrame.Value>
+                    <BitmapImage UriSource="/ControlTemplates/BackgroundAnimation/07.bmp"/>
+                </DiscreteObjectKeyFrame.Value>
+            </DiscreteObjectKeyFrame>
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.2333333">
+                <DiscreteObjectKeyFrame.Value>
+                    <BitmapImage UriSource="/ControlTemplates/BackgroundAnimation/08.bmp"/>
+                </DiscreteObjectKeyFrame.Value>
+            </DiscreteObjectKeyFrame>
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.2666666">
+                <DiscreteObjectKeyFrame.Value>
+                    <BitmapImage UriSource="/ControlTemplates/BackgroundAnimation/09.bmp"/>
+                </DiscreteObjectKeyFrame.Value>
+            </DiscreteObjectKeyFrame>
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.2999999">
+                <DiscreteObjectKeyFrame.Value>
+                    <BitmapImage UriSource="/ControlTemplates/BackgroundAnimation/10.bmp"/>
+                </DiscreteObjectKeyFrame.Value>
+            </DiscreteObjectKeyFrame>
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.3333333">
+                <DiscreteObjectKeyFrame.Value>
+                    <BitmapImage UriSource="/ControlTemplates/BackgroundAnimation/11.bmp"/>
+                </DiscreteObjectKeyFrame.Value>
+            </DiscreteObjectKeyFrame>
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.3666666">
+                <DiscreteObjectKeyFrame.Value>
+                    <BitmapImage UriSource="/ControlTemplates/BackgroundAnimation/12.bmp"/>
+                </DiscreteObjectKeyFrame.Value>
+            </DiscreteObjectKeyFrame>
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.3999999">
+                <DiscreteObjectKeyFrame.Value>
+                    <BitmapImage UriSource="/ControlTemplates/BackgroundAnimation/13.bmp"/>
+                </DiscreteObjectKeyFrame.Value>
+            </DiscreteObjectKeyFrame>
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.4333333">
+                <DiscreteObjectKeyFrame.Value>
+                    <BitmapImage UriSource="/ControlTemplates/BackgroundAnimation/14.bmp"/>
+                </DiscreteObjectKeyFrame.Value>
+            </DiscreteObjectKeyFrame>
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.4666666">
+                <DiscreteObjectKeyFrame.Value>
+                    <BitmapImage UriSource="/ControlTemplates/BackgroundAnimation/15.bmp"/>
+                </DiscreteObjectKeyFrame.Value>
+            </DiscreteObjectKeyFrame>
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.4999999">
+                <DiscreteObjectKeyFrame.Value>
+                    <BitmapImage UriSource="/ControlTemplates/BackgroundAnimation/16.bmp"/>
+                </DiscreteObjectKeyFrame.Value>
+            </DiscreteObjectKeyFrame>
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.5333333">
+                <DiscreteObjectKeyFrame.Value>
+                    <BitmapImage UriSource="/ControlTemplates/BackgroundAnimation/17.bmp"/>
+                </DiscreteObjectKeyFrame.Value>
+            </DiscreteObjectKeyFrame>
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.5666666">
+                <DiscreteObjectKeyFrame.Value>
+                    <BitmapImage UriSource="/ControlTemplates/BackgroundAnimation/18.bmp"/>
+                </DiscreteObjectKeyFrame.Value>
+            </DiscreteObjectKeyFrame>
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.5999999">
+                <DiscreteObjectKeyFrame.Value>
+                    <BitmapImage UriSource="/ControlTemplates/BackgroundAnimation/19.bmp"/>
+                </DiscreteObjectKeyFrame.Value>
+            </DiscreteObjectKeyFrame>
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.6333333">
+                <DiscreteObjectKeyFrame.Value>
+                    <BitmapImage UriSource="/ControlTemplates/BackgroundAnimation/20.bmp"/>
+                </DiscreteObjectKeyFrame.Value>
+            </DiscreteObjectKeyFrame>
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.6666666">
+                <DiscreteObjectKeyFrame.Value>
+                    <BitmapImage UriSource="/ControlTemplates/BackgroundAnimation/21.bmp"/>
+                </DiscreteObjectKeyFrame.Value>
+            </DiscreteObjectKeyFrame>
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.6999999">
+                <DiscreteObjectKeyFrame.Value>
+                    <BitmapImage UriSource="/ControlTemplates/BackgroundAnimation/22.bmp"/>
+                </DiscreteObjectKeyFrame.Value>
+            </DiscreteObjectKeyFrame>
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.7333333">
+                <DiscreteObjectKeyFrame.Value>
+                    <BitmapImage UriSource="/ControlTemplates/BackgroundAnimation/23.bmp"/>
+                </DiscreteObjectKeyFrame.Value>
+            </DiscreteObjectKeyFrame>
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.7666666">
+                <DiscreteObjectKeyFrame.Value>
+                    <BitmapImage UriSource="/ControlTemplates/BackgroundAnimation/24.bmp"/>
+                </DiscreteObjectKeyFrame.Value>
+            </DiscreteObjectKeyFrame>
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.7999999">
+                <DiscreteObjectKeyFrame.Value>
+                    <BitmapImage UriSource="/ControlTemplates/BackgroundAnimation/25.bmp"/>
+                </DiscreteObjectKeyFrame.Value>
+            </DiscreteObjectKeyFrame>
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.8333333">
+                <DiscreteObjectKeyFrame.Value>
+                    <BitmapImage UriSource="/ControlTemplates/BackgroundAnimation/26.bmp"/>
+                </DiscreteObjectKeyFrame.Value>
+            </DiscreteObjectKeyFrame>
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.8666666">
+                <DiscreteObjectKeyFrame.Value>
+                    <BitmapImage UriSource="/ControlTemplates/BackgroundAnimation/27.bmp"/>
+                </DiscreteObjectKeyFrame.Value>
+            </DiscreteObjectKeyFrame>
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.8999999">
+                <DiscreteObjectKeyFrame.Value>
+                    <BitmapImage UriSource="/ControlTemplates/BackgroundAnimation/28.bmp"/>
+                </DiscreteObjectKeyFrame.Value>
+            </DiscreteObjectKeyFrame>
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.9333333">
+                <DiscreteObjectKeyFrame.Value>
+                    <BitmapImage UriSource="/ControlTemplates/BackgroundAnimation/29.bmp"/>
+                </DiscreteObjectKeyFrame.Value>
+            </DiscreteObjectKeyFrame>
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.9666666">
+                <DiscreteObjectKeyFrame.Value>
+                    <BitmapImage UriSource="/ControlTemplates/BackgroundAnimation/30.bmp"/>
+                </DiscreteObjectKeyFrame.Value>
+            </DiscreteObjectKeyFrame>
+        </ObjectAnimationUsingKeyFrames>
+    </Storyboard>
+</ResourceDictionary>
