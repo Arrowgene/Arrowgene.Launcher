@@ -43,6 +43,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+        <!--   
         <Image Grid.RowSpan="15" Stretch="Fill">
             <Image.Triggers>
                 <EventTrigger RoutedEvent="Image.Loaded">
@@ -51,6 +52,7 @@
                 </EventTrigger>
             </Image.Triggers>
         </Image>
+        -->
         <StackPanel Grid.Row="1" x:Name="stackPanelGames" Orientation="Horizontal" HorizontalAlignment="Center"/>
         <Button Grid.Row="2" x:Name="buttonStart" Content="Start" Style="{StaticResource CustomButtonStyle}"/>
         <CheckBox Grid.Row="3" x:Name="checkBoxRememberLogin" Content="Remember Login" Style="{StaticResource CustomCheckBoxStyle}"/>

@@ -19,7 +19,7 @@ namespace Arrowgene.Launcher.Game.Ez2On
 
         public override void Start()
         {
-
+            this.Launch("NULL",base.Account, base.Hash);
         }
 
         /// <summary>

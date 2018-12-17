@@ -6,7 +6,7 @@ namespace Arrowgene.Launcher.Api
 {
     public class ArrowgeneApi
     {
-        private const string API_VERSION_URL = "https://www.arrowgene.net/api/v1/info/version";
+        private const string API_VERSION_URL = "https://arrowgene.net/api/v1/info/version";
 
         public ArrowgeneApi()
         {
