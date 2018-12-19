@@ -82,6 +82,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="ControlTemplates\LanguageButtonStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="ControlTemplates\GameButtonStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -115,6 +119,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="ControlTemplates\ButtonStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\LanguageWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -171,6 +179,17 @@
     <Compile Include="Ini\Util\ArgvParser.cs" />
     <Compile Include="Ini\Util\OrderedList.cs" />
     <Compile Include="Ini\Util\OrderedListEnumerator.cs" />
+    <Compile Include="Translation\LanguageConverter.cs" />
+    <Compile Include="Translation\Languages\Korean.cs" />
+    <Compile Include="Translation\Languages\Spanish.cs" />
+    <Compile Include="Translation\Languages\Chinese.cs" />
+    <Compile Include="Translation\Languages\English.cs" />
+    <Compile Include="Translation\LanguageType.cs" />
+    <Compile Include="Translation\Language.cs" />
+    <Compile Include="Translation\Translator.cs" />
+    <Compile Include="Windows\LanguageWindow.xaml.cs">
+      <DependentUpon>LanguageWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\DialogBox.xaml.cs">
       <DependentUpon>DialogBox.xaml</DependentUpon>
     </Compile>
@@ -256,6 +275,12 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="cn.png" />
+    <Resource Include="es.png" />
+    <Resource Include="kr.png" />
+    <Resource Include="en.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

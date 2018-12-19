@@ -19,7 +19,7 @@ namespace Arrowgene.Launcher.Game.Ez2On
 
         public override void Start()
         {
-            this.Launch("NULL",base.Account, base.Hash);
+            this.Launch("NULL", base.Account, base.Hash);
         }
 
         /// <summary>
@@ -30,7 +30,7 @@ namespace Arrowgene.Launcher.Game.Ez2On
         /// <param name="hash"></param>
         private void Launch(string session, string account, string hash)
         {
-            if(ExecutableExists)
+            if (ExecutableExists)
             {
                 Ez2OnPatcher patcher = new Ez2OnPatcher(Executable);
                 IPAddress ip = GetIpAddress();

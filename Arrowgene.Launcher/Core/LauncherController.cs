@@ -3,6 +3,7 @@
     using Arrowgene.Launcher.Api;
     using Arrowgene.Launcher.Download;
     using Arrowgene.Launcher.Game;
+    using Arrowgene.Launcher.Translation;
     using Arrowgene.Launcher.Windows;
     using Microsoft.Win32;
     using System;
@@ -18,11 +19,12 @@
         private ArrowgeneApi _api;
         private Downloader _downloader;
 
-        public LauncherController(ILauncherWindow launcherWindow)
+        public LauncherController(ILauncherWindow launcherWindow, Configuration config)
         {
             _window = launcherWindow;
             _window.window.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             _window.window.Loaded += Window_Loaded;
+            _config = config;
         }
 
         private void Game_SelectedGame(object sender, SelectedGameEventArgs e)
@@ -45,7 +47,7 @@
         {
             if (game == null)
             {
-                App.DisplayError("Couldn't select game", "LauncherController::ChangeGame");
+                App.DisplayError(Translate("could_not_select_game"), "LauncherController::ChangeGame");
                 return;
             }
             GameBase oldGame = _config.SelectedGame;
@@ -65,71 +67,70 @@
             }
         }
 
+        private string Translate(string key)
+        {
+            return Translator.Instance.Translate(key);
+        }
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            string configPath = App.GetConfigPath();
-            FileInfo configFile = App.CreateFileInfo(configPath);
-            if (configFile == null)
-            {
-                App.DisplayError(string.Format("The path: {0} is invalid.", configPath), "LauncherController::Window_Loaded");
-                Exit(ExitCode.CONFIG_PATH);
-            }
-            _config = new Configuration(configPath);
             _api = new ArrowgeneApi();
             _downloader = new Downloader();
-            if (_config.Load())
+
+            // Init Controls
+            _window.labelWebsite.Content = _config.WebUrl;
+            _window.buttonDownloadClient.IsEnabled = false;
+            UpdateProgress(null);
+
+            // Setup Games
+            foreach (GameBase game in _config.Games)
             {
-                // Init Controls
-                _window.labelWebsite.Content = _config.WebUrl;
-                _window.buttonDownloadClient.IsEnabled = false;
-                UpdateProgress(null);
-
-                // Setup Games
-                foreach (GameBase game in _config.Games)
-                {
-                    game.SelectedGame += Game_SelectedGame;
-                    _window.stackPanelGames.Children.Add(game.SelectGameButton);
-                }
-                if (_config.SelectedGame == null)
-                {
-                    if (_config.Games.Count > 0)
-                    {
-                        _config.SelectedGame = _config.Games[0];
-                    }
-                    else
-                    {
-                        App.DisplayError("No games available", "LauncherController::Window_Loaded");
-                        Exit(ExitCode.NO_GAMES);
-                    }
-                }
-                ChangeGame(_config.SelectedGame);
-                UpdateRememberLogin();
-
-                // Bind Events
-                _window.buttonClose.Click += buttonClose_Click;
-                _window.buttonStart.Click += buttonStart_Click;
-                _window.buttonSetGameLocation.Click += buttonSetGameLocation_Click;
-                _window.buttonDownloadClient.Click += buttonDownloadClient_Click;
-                _window.buttonCheckUpdates.Click += ButtonCheckUpdates_Click;
-                _window.labelWebsite.PreviewMouseDown += LabelWebsite_MouseUp;
-                _window.window.MouseDown += Window_MouseDown;
-                _window.checkBoxRememberLogin.Checked += CheckBoxRememberLogin_CheckedChanged;
-                _window.checkBoxRememberLogin.Unchecked += CheckBoxRememberLogin_CheckedChanged;
-                _window.passwordBoxPassword.GotFocus += PasswordBoxPassword_GotFocus;
-                _window.passwordBoxPassword.LostFocus += PasswordBoxPassword_LostFocus;
-                _window.textBoxAccount.LostFocus += TextBoxAccount_LostFocus;
-
-                // Request Current Version
-                _api.Version(UpdateVersion);
+                game.SelectedGame += Game_SelectedGame;
+                _window.stackPanelGames.Children.Add(game.SelectGameButton);
             }
-            else
+            if (_config.SelectedGame == null)
             {
-                Exit(ExitCode.LOAD_SETTINGS);
+                if (_config.Games.Count > 0)
+                {
+                    _config.SelectedGame = _config.Games[0];
+                }
+                else
+                {
+                    App.DisplayError(Translate("no_games"), "LauncherController::Window_Loaded");
+                    Exit(ExitCode.NO_GAMES);
+                }
             }
+            ChangeGame(_config.SelectedGame);
+            UpdateRememberLogin();
+
+            // Bind Events
+            _window.buttonClose.Click += ButtonClose_Click;
+            _window.buttonStart.Click += ButtonStart_Click;
+            _window.buttonSetGameLocation.Click += ButtonSetGameLocation_Click;
+            _window.buttonDownloadClient.Click += ButtonDownloadClient_Click;
+            _window.buttonCheckUpdates.Click += ButtonCheckUpdates_Click;
+            _window.buttonChangeLanguage.Click += ButtonChangeLanguage_Click; ;
+            _window.labelWebsite.PreviewMouseDown += LabelWebsite_MouseUp;
+            _window.window.MouseDown += Window_MouseDown;
+            _window.checkBoxRememberLogin.Checked += CheckBoxRememberLogin_CheckedChanged;
+            _window.checkBoxRememberLogin.Unchecked += CheckBoxRememberLogin_CheckedChanged;
+            _window.passwordBoxPassword.GotFocus += PasswordBoxPassword_GotFocus;
+            _window.passwordBoxPassword.LostFocus += PasswordBoxPassword_LostFocus;
+            _window.textBoxAccount.LostFocus += TextBoxAccount_LostFocus;
+
+            // Request Current Version
+            _api.Version(UpdateVersion);
+
             if (!_config.SelectedGame.ExecutableExists)
             {
                 ChooseGameLocation();
             }
+        }
+
+        private void ButtonChangeLanguage_Click(object sender, RoutedEventArgs e)
+        {
+            LanguageWindow languageWindow = new LanguageWindow(_window.window);
+            languageWindow.Show();
         }
 
         private void ButtonCheckUpdates_Click(object sender, RoutedEventArgs e)
@@ -137,7 +138,7 @@
             _api.Version(UpdateVersion);
         }
 
-        private void buttonSetGameLocation_Click(object sender, RoutedEventArgs e)
+        private void ButtonSetGameLocation_Click(object sender, RoutedEventArgs e)
         {
             ChooseGameLocation();
         }
@@ -148,7 +149,7 @@
             OpenFileDialog chooseFile = new OpenFileDialog();
             chooseFile.Filter = game.SelectExecutablePattern;
             chooseFile.Multiselect = false;
-            chooseFile.Title = string.Format("Select {0}'s executable in game folder", game.Name);
+            chooseFile.Title = string.Format(Translate("select_game_executable"), game.Name);
             if (game.ExecutableExists)
             {
                 chooseFile.InitialDirectory = game.Executable.DirectoryName;
@@ -163,17 +164,17 @@
                 }
                 else
                 {
-                    App.DisplayError("Could not find selected file", "LauncherController::ChooseGameLocation");
+                    App.DisplayError(Translate("could_not_find_selected_file"), "LauncherController::ChooseGameLocation");
                 }
             }
         }
 
-        private void buttonStart_Click(object sender, RoutedEventArgs e)
+        private void ButtonStart_Click(object sender, RoutedEventArgs e)
         {
             _config.SelectedGame.Start();
         }
 
-        private void buttonDownloadClient_Click(object sender, RoutedEventArgs e)
+        private void ButtonDownloadClient_Click(object sender, RoutedEventArgs e)
         {
             string url = _config.SelectedGame.GetDownloadUrl();
             if (!string.IsNullOrEmpty(url))
@@ -290,9 +291,9 @@
                 _window.buttonDownloadClient.IsEnabled = true;
                 _window.labelLatestClientVersion.Content = _config.SelectedGame.GetLatestClientVersion();
             });
-            if(App.VERSION < version.LauncherVersion)
+            if (App.VERSION < version.LauncherVersion)
             {
-                DialogBox dialogBox = new DialogBox(_window.window, "A new launcher version is available, download now?", "Launcher Update");
+                DialogBox dialogBox = new DialogBox(_window.window, Translate("new_launcher_download_now"), Translate("launcher_update"));
                 if (dialogBox.ShowDialog() == true)
                 {
                     Process.Start(version.LauncherUrl);
@@ -300,7 +301,7 @@
             }
         }
 
-        private void buttonClose_Click(object sender, RoutedEventArgs e)
+        private void ButtonClose_Click(object sender, RoutedEventArgs e)
         {
             Exit(ExitCode.CLOSE_BUTTON);
         }

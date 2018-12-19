@@ -1,6 +1,7 @@
 ﻿namespace Arrowgene.Launcher
 {
     using Arrowgene.Launcher.Core;
+    using Arrowgene.Launcher.Translation;
     using Arrowgene.Launcher.Windows;
     using System;
     using System.IO;
@@ -31,7 +32,21 @@
             _logger = new Logger(GetLogPath());
             _logger.Log(string.Format("Startup - Version: {0}", VERSION), "App::Main");
             _launcherWindow = new LauncherWindow();
-            LauncherController launcherController = new LauncherController(_launcherWindow);
+
+            string configPath = GetConfigPath();
+            FileInfo configFile = CreateFileInfo(configPath);
+            if (configFile == null)
+            {
+                DisplayError(string.Format("The path: {0} is invalid.", configPath), "LauncherController::Window_Loaded");
+                Environment.Exit((int)ExitCode.CONFIG_PATH);
+            }
+            Configuration config = new Configuration(configPath);
+            if (!config.Load())
+            {
+                Environment.Exit((int)ExitCode.LOAD_SETTINGS);
+            }
+            Translator.Instance.ChangeLanguage(config.SelectedLanguage);
+            LauncherController launcherController = new LauncherController(_launcherWindow, config);
             App launcher = new App();
             launcher.Run(_launcherWindow);
         }

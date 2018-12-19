@@ -3,6 +3,7 @@
     using Arrowgene.Launcher.Game;
     using Arrowgene.Launcher.Game.Dance;
     using Arrowgene.Launcher.Game.Ez2On;
+    using Arrowgene.Launcher.Translation;
     using Arrowgene.Launcher.Windows;
     using Nini.Config;
     using System;
@@ -16,6 +17,7 @@
 
         private const string SECTION_LAUNCHER = "Launcher";
         private const string LAUNCHER_GAME = "Game";
+        private const string LAUNCHER_LANGUAGE = "Language";
 
         private const string GAME_EXE = "Exe";
         private const string GAME_REMEMBER_LOGIN = "SaveLogin";
@@ -37,6 +39,7 @@
         public string WebUrl { get; }
         public List<GameBase> Games { get; }
         public GameBase SelectedGame { get; set; }
+        public LanguageType SelectedLanguage { get; set; }
 
         public bool Load()
         {
@@ -49,8 +52,10 @@
                 }
                 else
                 {
+                    // Default Settings
                     _iniFile = new IniConfigSource();
                     _iniFile.Save(configPath.FullName);
+                    SelectedLanguage = LanguageType.English;
                 }
                 foreach (GameType gameType in Enum.GetValues(typeof(GameType)))
                 {
@@ -87,6 +92,7 @@
                 {
                     GameType selectedGameType = GetGameType(launcherSection.Get(LAUNCHER_GAME));
                     SelectedGame = GetGame(selectedGameType);
+                    SelectedLanguage = GetLanguageType(launcherSection.Get(LAUNCHER_LANGUAGE));
                 }
             }
             catch (Exception ex)
@@ -120,6 +126,7 @@
                 {
                     launcherSection = _iniFile.AddConfig(SECTION_LAUNCHER);
                 }
+                launcherSection.Set(LAUNCHER_LANGUAGE, GetString(SelectedLanguage));
                 if (SelectedGame != null)
                 {
                     launcherSection.Set(LAUNCHER_GAME, GetString(SelectedGame.Type));
@@ -185,7 +192,17 @@
             return (GameType)Enum.Parse(typeof(GameType), value);
         }
 
+        private LanguageType GetLanguageType(string value)
+        {
+            return (LanguageType)Enum.Parse(typeof(LanguageType), value);
+        }
+
         private string GetString(GameType value)
+        {
+            return value.ToString();
+        }
+
+        private string GetString(LanguageType value)
         {
             return value.ToString();
         }

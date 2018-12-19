@@ -29,7 +29,10 @@
 
         public DialogBox(Window owner, string message, string title, DialogButton dialogButton)
         {
-            this.Owner = owner;
+            if (owner.IsLoaded)
+            {
+                this.Owner = owner;
+            }
             this.message = message;
             this.title = title;
             this.dialogButton = dialogButton;
