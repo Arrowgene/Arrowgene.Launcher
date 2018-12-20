@@ -28,6 +28,7 @@
             _translations.Add("select_game_executable", "在游戏文件夹中选择 {0} 的可执行文件");  // {0} = Ez2On | Dance!
             _translations.Add("please_restart", "请重新启动应用程序才能生效");
             _translations.Add("notice", "注意");
+            _translations.Add("could_not_find_url", "找不到启动器URL");
         }
 
         public override string FlagRessource => "pack://application:,,,/cn.png";

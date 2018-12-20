@@ -292,11 +292,19 @@
             });
             if (App.VERSION < version.LauncherVersion)
             {
-                DialogBox dialogBox = new DialogBox(_window.window, Translate("new_launcher_download_now"), Translate("launcher_update"));
-                if (dialogBox.ShowDialog() == true)
+                App.Dispatch(() =>
                 {
-                    Process.Start(version.LauncherUrl);
-                }
+                    DialogBox dialogBox = new DialogBox(_window.window, Translate("new_launcher_download_now"), Translate("launcher_update"));
+                    if (dialogBox.ShowDialog() == true)
+                    {
+                        if (String.IsNullOrEmpty(version.LauncherUrl))
+                        {
+                            App.DisplayError(Translate("could_not_find_url"), "LauncherController::UpdateVersion");
+                            return;
+                        }
+                        Process.Start(version.LauncherUrl);
+                    }
+                });
             }
         }
 

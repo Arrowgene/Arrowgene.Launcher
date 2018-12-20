@@ -171,6 +171,14 @@
             }));
         }
 
+        public static void DisplayMessage(string message, string title)
+        {
+            Dispatch(new Action(() =>
+            {
+                new DialogBox(Window, message, title).ShowDialog();
+            }));
+        }
+
         public static void DisplayMessage(string message, string title, Window owner)
         {
             Dispatch(new Action(() =>

@@ -28,6 +28,7 @@
             _translations.Add("select_game_executable", "Select {0}'s executable in game folder");  // {0} = Ez2On | Dance!
             _translations.Add("please_restart", "Please restart the application to take effect");
             _translations.Add("notice", "Notice");
+            _translations.Add("could_not_find_url", "Launcher URL could not be found");
         }
 
         public override string FlagRessource => "pack://application:,,,/en.png";

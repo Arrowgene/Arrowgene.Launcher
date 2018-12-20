@@ -28,6 +28,7 @@
             _translations.Add("select_game_executable", "{0} 게임 폴더에 있는 exe를 선택하세요.");  // {0} = Ez2On | Dance!
             _translations.Add("please_restart", "적용하려면 응용 프로그램을 다시 시작하십시오.");
             _translations.Add("notice", "정보");
+            _translations.Add("could_not_find_url", "실행기 URL을 찾을 수 없습니다.");
         }
 
         public override string FlagRessource => "pack://application:,,,/kr.png";
