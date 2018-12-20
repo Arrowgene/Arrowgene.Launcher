@@ -26,6 +26,8 @@
             _translations.Add("new_launcher_download_now", "A new launcher version is available, download now?");
             _translations.Add("launcher_update", "Launcher Update");
             _translations.Add("select_game_executable", "Select {0}'s executable in game folder");  // {0} = Ez2On | Dance!
+            _translations.Add("please_restart", "Please restart the application to take effect");
+            _translations.Add("notice", "Notice");
         }
 
         public override string FlagRessource => "pack://application:,,,/en.png";

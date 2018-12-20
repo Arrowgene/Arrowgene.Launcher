@@ -122,10 +122,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Windows\LanguageWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Windows\DialogBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -187,9 +183,6 @@
     <Compile Include="Translation\LanguageType.cs" />
     <Compile Include="Translation\Language.cs" />
     <Compile Include="Translation\Translator.cs" />
-    <Compile Include="Windows\LanguageWindow.xaml.cs">
-      <DependentUpon>LanguageWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Windows\DialogBox.xaml.cs">
       <DependentUpon>DialogBox.xaml</DependentUpon>
     </Compile>

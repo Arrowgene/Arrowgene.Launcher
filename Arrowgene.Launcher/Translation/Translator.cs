@@ -1,4 +1,5 @@
 ﻿using Arrowgene.Launcher.Translation.Languages;
+using System;
 using System.Collections.Generic;
 
 namespace Arrowgene.Launcher.Translation
@@ -24,7 +25,7 @@ namespace Arrowgene.Launcher.Translation
         }
 
         public LanguageType Current => _language;
-
+        public Action<LanguageType> OnChange;
         public List<Language> Languages => new List<Language>(_languages);
 
         public string Translate(string key)
@@ -38,8 +39,17 @@ namespace Arrowgene.Launcher.Translation
             {
                 if (language.LanguageType == languageType)
                 {
+                    if (_current != null)
+                    {
+                        _current.SelectLanguageButton.IsEnabled = true;
+                    }
+                    language.SelectLanguageButton.IsEnabled = false;
                     _language = languageType;
                     _current = language;
+                    if (OnChange != null)
+                    {
+                        OnChange.Invoke(_language);
+                    }
                     break;
                 }
             }

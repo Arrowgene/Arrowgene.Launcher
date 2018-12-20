@@ -82,6 +82,12 @@
             _window.buttonDownloadClient.IsEnabled = false;
             UpdateProgress(null);
 
+            // Setup Languages
+            foreach (Language language in Translator.Instance.Languages)
+            {
+                _window.stackPanelLanguages.Children.Add(language.SelectLanguageButton);
+            }
+
             // Setup Games
             foreach (GameBase game in _config.Games)
             {
@@ -109,7 +115,6 @@
             _window.buttonSetGameLocation.Click += ButtonSetGameLocation_Click;
             _window.buttonDownloadClient.Click += ButtonDownloadClient_Click;
             _window.buttonCheckUpdates.Click += ButtonCheckUpdates_Click;
-            _window.buttonChangeLanguage.Click += ButtonChangeLanguage_Click; ;
             _window.labelWebsite.PreviewMouseDown += LabelWebsite_MouseUp;
             _window.window.MouseDown += Window_MouseDown;
             _window.checkBoxRememberLogin.Checked += CheckBoxRememberLogin_CheckedChanged;
@@ -125,12 +130,6 @@
             {
                 ChooseGameLocation();
             }
-        }
-
-        private void ButtonChangeLanguage_Click(object sender, RoutedEventArgs e)
-        {
-            LanguageWindow languageWindow = new LanguageWindow(_window.window);
-            languageWindow.Show();
         }
 
         private void ButtonCheckUpdates_Click(object sender, RoutedEventArgs e)

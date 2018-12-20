@@ -23,11 +23,11 @@ namespace Arrowgene.Launcher.Windows
         Button ILauncherWindow.buttonStart => this.buttonStart;
         Button ILauncherWindow.buttonClose => this.buttonClose;
         Button ILauncherWindow.buttonCheckUpdates => this.buttonCheckUpdates;
-        Button ILauncherWindow.buttonChangeLanguage => this.buttonChangeLanguage;
         CheckBox ILauncherWindow.checkBoxRememberLogin => this.checkBoxRememberLogin;
         TextBox ILauncherWindow.textBoxAccount => this.textBoxAccount;
         PasswordBox ILauncherWindow.passwordBoxPassword => this.passwordBoxPassword;
         ProgressBar ILauncherWindow.progressBarDownload => this.progressBarDownload;
         StackPanel ILauncherWindow.stackPanelGames => this.stackPanelGames;
+        StackPanel ILauncherWindow.stackPanelLanguages => this.stackPanelLanguages;
     }
 }

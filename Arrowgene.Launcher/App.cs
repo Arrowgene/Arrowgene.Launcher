@@ -46,6 +46,11 @@
                 Environment.Exit((int)ExitCode.LOAD_SETTINGS);
             }
             Translator.Instance.ChangeLanguage(config.SelectedLanguage);
+            Translator.Instance.OnChange = (LanguageType languageType) =>
+            {
+                config.SelectedLanguage = languageType;
+                DisplayMessage(Translator.Instance.Translate("please_restart"), Translator.Instance.Translate("notice"), App.Window);
+            };
             LauncherController launcherController = new LauncherController(_launcherWindow, config);
             App launcher = new App();
             launcher.Run(_launcherWindow);
@@ -163,6 +168,14 @@
             Dispatch(new Action(() =>
             {
                 new DialogBox(owner, error, "Error").ShowDialog();
+            }));
+        }
+
+        public static void DisplayMessage(string message, string title, Window owner)
+        {
+            Dispatch(new Action(() =>
+            {
+                new DialogBox(owner, message, title).ShowDialog();
             }));
         }
 

@@ -17,11 +17,11 @@
         Button buttonStart { get; }
         Button buttonClose { get; }
         Button buttonCheckUpdates { get; }
-        Button buttonChangeLanguage { get; }
         ProgressBar progressBarDownload { get; }
         CheckBox checkBoxRememberLogin { get; }
         TextBox textBoxAccount { get; }
         PasswordBox passwordBoxPassword { get; }
         StackPanel stackPanelGames { get; }
+        StackPanel stackPanelLanguages { get; }
     }
 }

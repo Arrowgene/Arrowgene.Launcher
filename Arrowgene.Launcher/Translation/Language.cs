@@ -12,7 +12,6 @@ namespace Arrowgene.Launcher.Translation
         protected Dictionary<string, string> _translations;
 
         public Button SelectLanguageButton { get; }
-
         public abstract string FlagRessource { get; }
         public abstract LanguageType LanguageType { get; }
 
@@ -20,7 +19,7 @@ namespace Arrowgene.Launcher.Translation
         {
             _translations = new Dictionary<string, string>();
             SelectLanguageButton = new Button();
-            SelectLanguageButton.Style = App.Window.Resources["LanguageButtonStyle"] as Style;
+            SelectLanguageButton.Style = App.Window.Resources["CustomLanguageButtonStyle"] as Style;
             SelectLanguageButton.Background = new ImageBrush(new BitmapImage(new Uri(FlagRessource)));
             SelectLanguageButton.Click += SelectLanguageButton_Click;
         }

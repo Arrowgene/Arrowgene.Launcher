@@ -4,28 +4,30 @@
     {
         public Spanish()
         {
-            _translations.Add("language_name", "English");
-            _translations.Add("yes", "Yes");
+            _translations.Add("language_name", "Español");
+            _translations.Add("yes", "Sí");
             _translations.Add("no", "No");
-            _translations.Add("start", "Start");
-            _translations.Add("remember_login", "Remember Login");
-            _translations.Add("file_path", "Path:");
-            _translations.Add("client_version", "Client Version:");
-            _translations.Add("latest_client_version", "Latest:");
-            _translations.Add("set_game_location", "Set Game Location");
-            _translations.Add("download_client", "Download Client");
-            _translations.Add("check_for_updates", "Check For Updates");
-            _translations.Add("close", "Close");
-            _translations.Add("status", "Status");
-            _translations.Add("title", "Title");
-            _translations.Add("message", "Message");
-            _translations.Add("change_language", "Change Language");
-            _translations.Add("could_not_select_game", "Couldn't select game");
-            _translations.Add("no_games", "No games available");
-            _translations.Add("could_not_find_selected_file", "Couldn't find selected file");
-            _translations.Add("new_launcher_download_now", "A new launcher version is available, download now?");
-            _translations.Add("launcher_update", "Launcher Update");
-            _translations.Add("select_game_executable", "Select {0}'s executable in game folder");  // {0} = Ez2On | Dance!
+            _translations.Add("start", "Comienzo");
+            _translations.Add("remember_login", "Recuerda iniciar sesión");
+            _translations.Add("file_path", "Ruta de archivo:");
+            _translations.Add("client_version", "Versión de cliente:");
+            _translations.Add("latest_client_version", "Ultima:");
+            _translations.Add("set_game_location", "Establecer la ubicación del juego");
+            _translations.Add("download_client", "Descargar cliente");
+            _translations.Add("check_for_updates", "Buscar actualizaciones");
+            _translations.Add("close", "Cerrar");
+            _translations.Add("status", "Estado");
+            _translations.Add("title", "Título");
+            _translations.Add("message", "Mensaje");
+            _translations.Add("change_language", "Cambiar idioma");
+            _translations.Add("could_not_select_game", "No se pudo seleccionar el juego");
+            _translations.Add("no_games", "No hay juegos disponibles");
+            _translations.Add("could_not_find_selected_file", "No se pudo encontrar el archivo seleccionado");
+            _translations.Add("new_launcher_download_now", "Una nueva versión de lanzador está disponible, ¿descargarla ahora?");
+            _translations.Add("launcher_update", "Actualización del lanzador");
+            _translations.Add("select_game_executable", "Selecciona el ejecutable de {0} en la carpeta del juego");  // {0} = Ez2On | Dance!
+            _translations.Add("please_restart", "Por favor reinicie la aplicación para que tenga efecto.");
+            _translations.Add("notice", "Información");
         }
 
         public override string FlagRessource => "pack://application:,,,/es.png";
