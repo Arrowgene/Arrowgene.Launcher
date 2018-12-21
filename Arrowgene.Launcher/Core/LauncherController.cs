@@ -186,11 +186,7 @@
         private void ButtonDownloadClient_Click(object sender, RoutedEventArgs e)
         {
             App.Logger.Log("Trace", "LauncherController::ButtonDownloadClient_Click");
-            string url = _config.SelectedGame.GetDownloadUrl();
-            if (!string.IsNullOrEmpty(url))
-            {
-                Process.Start(url);
-            }
+            _downloader.Download(_config.SelectedGame);
         }
 
         private void CheckBoxRememberLogin_CheckedChanged(object sender, RoutedEventArgs e)
@@ -349,12 +345,7 @@
                     DialogBox dialogBox = new DialogBox(_window.window, Translate("new_client_download_now"), Translate("notice"), DialogBox.DialogButton.YES_NO);
                     if (dialogBox.ShowDialog() == true)
                     {
-                        if (String.IsNullOrEmpty(selected.GetDownloadUrl()))
-                        {
-                            App.DisplayError(Translate("could_not_find_url"), "LauncherController::UpdateVersion:Game");
-                            return;
-                        }
-                        Process.Start(selected.GetDownloadUrl());
+                        _downloader.Download(selected);
                     }
                 });
             }

@@ -34,6 +34,8 @@
             _translations.Add("can_not_find_executable", "실행 파일을 찾을 수 없습니다. 게임 위치 ({0})를 설정하십시오."); // {0} = C://game/game.exe
             _translations.Add("failed_to_create_args", "시작 인수를 만들지 못했습니다.");
             _translations.Add("failed_to_resolve_ip", "'{0}'의 IP 주소를 찾을 수 없습니다."); // {0} = https://domain.tld
+            _translations.Add("download_from_mirror", "파일 서버에서 다운로드 하시겠습니까? (더 빠르게)");
+            _translations.Add("after_download_instruction", "다운로드가 완료되면 아카이브를 추출하고 '게임 위치 설정'버튼을 사용하십시오");
         }
 
         public override string FlagRessource => "pack://application:,,,/kr.png";

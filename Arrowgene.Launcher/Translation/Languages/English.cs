@@ -34,6 +34,8 @@
             _translations.Add("can_not_find_executable", "Can not find executable. Please set a game location ({0})"); // {0} = C://game/game.exe
             _translations.Add("failed_to_create_args", "Unable to create startup parameters");
             _translations.Add("failed_to_resolve_ip", "Unable to find the IP address of '{0}'"); // {0} = https://domain.tld
+            _translations.Add("download_from_mirror", "Download from File Host? (faster)");
+            _translations.Add("after_download_instruction", "After the download completed: Extract the archive and use the 'Set Game Location'-button");
         }
 
         public override string FlagRessource => "pack://application:,,,/en.png";

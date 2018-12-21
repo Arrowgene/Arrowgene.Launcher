@@ -96,13 +96,28 @@ namespace Arrowgene.Launcher.Game
             if (_version != null)
             {
                 if (Type == GameType.Dance)
-            {
-                return _version.DanceUrl;
+                {
+                    return _version.DanceUrl;
+                }
+                if (Type == GameType.Ez2on)
+                {
+                    return _version.Ez2OnUrl;
+                }
             }
-            if (Type == GameType.Ez2on)
+            return string.Empty;
+        }
+        public string GetDownloadUrlMirror()
+        {
+            if (_version != null)
             {
-                return _version.Ez2OnUrl;
-            }
+                if (Type == GameType.Dance)
+                {
+                    return _version.DanceUrlMirror;
+                }
+                if (Type == GameType.Ez2on)
+                {
+                    return _version.Ez2OnUrlMirror;
+                }
             }
             return string.Empty;
         }
