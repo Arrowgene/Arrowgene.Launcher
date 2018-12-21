@@ -1,4 +1,4 @@
-﻿using System;
+﻿using Arrowgene.Launcher.Translation;
 using System.Net;
 using System.Text;
 
@@ -26,34 +26,32 @@ namespace Arrowgene.Launcher.Game.Dance
 
         public override void Start()
         {
-            if (ExecutableExists)
+            App.Logger.Log("Trace", "DanceGame::Start");
+            if (!ExecutableExists)
             {
-                IPAddress ipAddress = GetIpAddress();
-                if (ipAddress != null)
-                {
-                    string arguments = CreateGameStartArguments(ipAddress);
-                    if (!string.IsNullOrEmpty(arguments))
-                    {
-                        StartProcess(Executable.FullName, arguments, Executable.DirectoryName);
-                    }
-                    else
-                    {
-                        App.DisplayError("Failed to create startup arguments", "LauncherController::buttonStart_Click");
-                    }
-                }
-                else
-                {
-                    App.DisplayError(String.Format("Can not find IPAdress of '{0}'", Host), "LauncherController::buttonStart_Click");
-                }
+                App.DisplayError(string.Format(Translator.Instance.Translate("can_not_find_executable"), ExecutablePath), "DanceGame::Start");
+                return;
             }
-            else
+            IPAddress ipAddress = GetIpAddress();
+            if (ipAddress == null)
             {
-                App.DisplayError(String.Format("Can not find file '{0}'", ExecutablePath), "LauncherController::buttonStart_Click");
+
+                App.DisplayError(string.Format(Translator.Instance.Translate("failed_to_resolve_ip"), Host), "DanceGame::Start");
+                return;
             }
+            string arguments = CreateGameStartArguments(ipAddress);
+            if (string.IsNullOrEmpty(arguments))
+            {
+
+                App.DisplayError(Translator.Instance.Translate("failed_to_create_args"), "DanceGame::Start");
+                return;
+            }
+            StartProcess(Executable.FullName, arguments, Executable.DirectoryName);
         }
 
         private string CreateGameStartArguments(IPAddress ipAddress)
         {
+            App.Logger.Log("Trace", "DanceGame::CreateGameStartArguments");
             string arguments = null;
             if (ipAddress != null)
             {

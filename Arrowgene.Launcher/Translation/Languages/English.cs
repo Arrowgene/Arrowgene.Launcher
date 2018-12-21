@@ -29,6 +29,11 @@
             _translations.Add("please_restart", "Please restart the application to take effect");
             _translations.Add("notice", "Notice");
             _translations.Add("could_not_find_url", "Launcher URL could not be found");
+            _translations.Add("unknown_client", "Client version check failed, your client is not supported and can not be checked for updates");
+            _translations.Add("new_client_download_now", "New client detected, download now?");
+            _translations.Add("can_not_find_executable", "Can not find executable. Please set a game location ({0})"); // {0} = C://game/game.exe
+            _translations.Add("failed_to_create_args", "Unable to create startup parameters");
+            _translations.Add("failed_to_resolve_ip", "Unable to find the IP address of '{0}'"); // {0} = https://domain.tld
         }
 
         public override string FlagRessource => "pack://application:,,,/en.png";

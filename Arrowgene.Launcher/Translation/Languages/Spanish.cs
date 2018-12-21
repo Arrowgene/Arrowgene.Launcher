@@ -29,6 +29,11 @@
             _translations.Add("please_restart", "Por favor reinicie la aplicación para que tenga efecto.");
             _translations.Add("notice", "Información");
             _translations.Add("could_not_find_url", "URL del lanzador no se pudo encontrar");
+            _translations.Add("unknown_client", "Error en la verificación de la versión del cliente, su cliente no es compatible y no se puede verificar si hay actualizaciones");
+            _translations.Add("new_client_download_now", "Nuevo cliente detectado, descargar ahora?");
+            _translations.Add("can_not_find_executable", "No se puede encontrar ejecutable. Por favor, establece una ubicación del juego ({0})"); // {0} = C://game/game.exe
+            _translations.Add("failed_to_create_args", "Error al crear argumentos de inicio");
+            _translations.Add("failed_to_resolve_ip", "No se puede encontrar la dirección IP de '{0}'"); // {0} = https://domain.tld
         }
 
         public override string FlagRessource => "pack://application:,,,/es.png";

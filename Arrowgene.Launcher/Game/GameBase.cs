@@ -13,6 +13,26 @@ namespace Arrowgene.Launcher.Game
 {
     public abstract class GameBase
     {
+        public static int? GetClientVersion(FileInfo executable)
+        {
+            if (executable != null && executable.Exists)
+            {
+                string versionPath = Path.Combine(executable.DirectoryName, VERSION_FILE_NAME);
+                FileInfo version = App.CreateFileInfo(versionPath);
+                if (version != null && version.Exists)
+                {
+                    string file = null;
+                    using (StreamReader sr = new StreamReader(version.FullName))
+                    {
+                        file = sr.ReadToEnd();
+                    }
+                    int.TryParse(file, out int v);
+                    return v;
+                }
+            }
+            return null;
+        }
+
         private const string VERSION_FILE_NAME = "ag.version";
 
         private ApiVersion _version;
@@ -55,7 +75,7 @@ namespace Arrowgene.Launcher.Game
             return App.IPAddressLookup(Host, AddressFamily.InterNetwork);
         }
 
-        public int GetLatestClientVersion()
+        public int? GetLatestClientVersion()
         {
             if (_version != null)
             {
@@ -68,7 +88,7 @@ namespace Arrowgene.Launcher.Game
                     return _version.Ez2OnVersion;
                 }
             }
-            return -1;
+            return null;
         }
 
         public string GetDownloadUrl()
@@ -87,24 +107,9 @@ namespace Arrowgene.Launcher.Game
             return string.Empty;
         }
 
-        public int GetClientVersion()
+        public int? GetClientVersion()
         {
-            int v = -1;
-            if (ExecutableExists)
-            {
-                string versionPath = Path.Combine(Executable.DirectoryName, VERSION_FILE_NAME);
-                FileInfo version = App.CreateFileInfo(versionPath);
-                if (version != null && version.Exists)
-                {
-                    string file = null;
-                    using (StreamReader sr = new StreamReader(version.FullName))
-                    {
-                        file = sr.ReadToEnd();
-                    }
-                    int.TryParse(file, out v);
-                }
-            }
-            return v;
+            return GetClientVersion(Executable);
         }
 
         public void SetVersion(ApiVersion version)

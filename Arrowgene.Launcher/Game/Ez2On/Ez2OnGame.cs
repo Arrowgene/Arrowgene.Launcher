@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using Arrowgene.Launcher.Translation;
+using System.Net;
 
 namespace Arrowgene.Launcher.Game.Ez2On
 {
@@ -19,6 +20,7 @@ namespace Arrowgene.Launcher.Game.Ez2On
 
         public override void Start()
         {
+            App.Logger.Log("Trace", "Ez2OnGame::Start");
             this.Launch("NULL", base.Account, base.Hash);
         }
 
@@ -30,19 +32,23 @@ namespace Arrowgene.Launcher.Game.Ez2On
         /// <param name="hash"></param>
         private void Launch(string session, string account, string hash)
         {
-            if (ExecutableExists)
+            App.Logger.Log("Trace", "Ez2OnGame::Launch");
+            if (!ExecutableExists)
             {
-                Ez2OnPatcher patcher = new Ez2OnPatcher(Executable);
-                IPAddress ip = GetIpAddress();
-                App.Logger.Log(string.Format("Patching - IP: {0} Port: {1}", ip, Port), "Ez2OnGame::Launch");
-                patcher.SavePatches(ip.ToString(), Port, true);
-                string arguments = string.Format("{0}|{1}|{2}|{3}", session, account, hash, 9999);
-                StartProcess(Executable.FullName, arguments, Executable.DirectoryName);
+                App.DisplayError(string.Format(Translator.Instance.Translate("can_not_find_executable"), ExecutablePath), "Ez2OnGame::Launch");
+                return;
             }
-            else
+            IPAddress ip = GetIpAddress();
+            if (ip == null)
             {
-                App.DisplayError(string.Format("Can not find executable. ({0})", ExecutablePath), "Ez2OnGame::Launch");
+                App.DisplayError(string.Format(Translator.Instance.Translate("failed_to_resolve_ip"), Host), "Ez2OnGame::Launch");
+                return;
             }
+            App.Logger.Log(string.Format("Patching - IP: {0} Port: {1}", ip, Port), "Ez2OnGame::Launch");
+            Ez2OnPatcher patcher = new Ez2OnPatcher(Executable);
+            patcher.SavePatches(ip.ToString(), Port, true);
+            string arguments = string.Format("{0}|{1}|{2}|{3}", session, account, hash, 9999);
+            StartProcess(Executable.FullName, arguments, Executable.DirectoryName);
         }
     }
 }

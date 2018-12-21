@@ -29,6 +29,11 @@
             _translations.Add("please_restart", "请重新启动应用程序才能生效");
             _translations.Add("notice", "注意");
             _translations.Add("could_not_find_url", "找不到启动器URL");
+            _translations.Add("unknown_client", "客户端版本检查失败，您的客户端不受支持，无法检查更新");
+            _translations.Add("new_client_download_now", "检测到新客户端，立即下载？");
+            _translations.Add("can_not_find_executable", "找不到可执行文件。 请设置游戏位置（{0}"); // {0} = C://game/game.exe
+            _translations.Add("failed_to_create_args", "无法创建启动参数");
+            _translations.Add("failed_to_resolve_ip", "找不到“{0}”的IP地址"); // {0} = https://domain.tld
         }
 
         public override string FlagRessource => "pack://application:,,,/cn.png";

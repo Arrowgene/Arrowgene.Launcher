@@ -29,11 +29,13 @@
 
         private void Game_SelectedGame(object sender, SelectedGameEventArgs e)
         {
+            App.Logger.Log("Trace", "LauncherController::Game_SelectedGame");
             ChangeGame(e.Game);
         }
 
         private void Exit(ExitCode exitCode)
         {
+            App.Logger.Log("Trace", "LauncherController::Exit");
             _downloader.Stop();
             _config.Save();
             if (exitCode != ExitCode.CLOSE_BUTTON)
@@ -45,6 +47,7 @@
 
         private void ChangeGame(GameBase game)
         {
+            App.Logger.Log("Trace", "LauncherController::ChangeGame");
             if (game == null)
             {
                 App.DisplayError(Translate("could_not_select_game"), "LauncherController::ChangeGame");
@@ -74,6 +77,7 @@
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            App.Logger.Log("Trace", "LauncherController::Window_Loaded");
             _api = new ArrowgeneApi();
             _downloader = new Downloader();
 
@@ -124,26 +128,24 @@
             _window.textBoxAccount.LostFocus += TextBoxAccount_LostFocus;
 
             // Request Current Version
-            _api.Version(UpdateVersion);
-
-            if (!_config.SelectedGame.ExecutableExists)
-            {
-                ChooseGameLocation();
-            }
+            _api.Version(UpdateVersion, true);
         }
 
         private void ButtonCheckUpdates_Click(object sender, RoutedEventArgs e)
         {
+            App.Logger.Log("Trace", "LauncherController::ButtonCheckUpdates_Click");
             _api.Version(UpdateVersion);
         }
 
         private void ButtonSetGameLocation_Click(object sender, RoutedEventArgs e)
         {
+            App.Logger.Log("Trace", "LauncherController::ButtonSetGameLocation_Click");
             ChooseGameLocation();
         }
 
         private void ChooseGameLocation()
         {
+            App.Logger.Log("Trace", "LauncherController::ChooseGameLocation");
             GameBase game = _config.SelectedGame;
             OpenFileDialog chooseFile = new OpenFileDialog();
             chooseFile.Filter = game.SelectExecutablePattern;
@@ -156,6 +158,13 @@
             if (chooseFile.ShowDialog() == true)
             {
                 FileInfo executable = App.CreateFileInfo(chooseFile.FileName);
+                int? version = GameBase.GetClientVersion(executable);
+                if (version == null)
+                {
+                    App.DisplayMessage(Translate("unknown_client"), Translate("notice"));
+
+                    return;
+                }
                 if (executable != null)
                 {
                     game.Executable = executable;
@@ -170,11 +179,13 @@
 
         private void ButtonStart_Click(object sender, RoutedEventArgs e)
         {
+            App.Logger.Log("Trace", "LauncherController::ButtonStart_Click");
             _config.SelectedGame.Start();
         }
 
         private void ButtonDownloadClient_Click(object sender, RoutedEventArgs e)
         {
+            App.Logger.Log("Trace", "LauncherController::ButtonDownloadClient_Click");
             string url = _config.SelectedGame.GetDownloadUrl();
             if (!string.IsNullOrEmpty(url))
             {
@@ -184,11 +195,13 @@
 
         private void CheckBoxRememberLogin_CheckedChanged(object sender, RoutedEventArgs e)
         {
+            App.Logger.Log("Trace", "LauncherController::CheckBoxRememberLogin_CheckedChanged");
             UpdateRememberLogin();
         }
 
         private void UpdateRememberLogin()
         {
+            App.Logger.Log("Trace", "LauncherController::UpdateRememberLogin");
             if (_window.checkBoxRememberLogin.IsChecked == true)
             {
                 _window.textBoxAccount.IsEnabled = true;
@@ -209,6 +222,7 @@
 
         private void TextBoxAccount_LostFocus(object sender, RoutedEventArgs e)
         {
+            App.Logger.Log("Trace", "LauncherController::TextBoxAccount_LostFocus");
             String account = _window.textBoxAccount.Text;
             if (string.IsNullOrEmpty(account))
             {
@@ -222,6 +236,7 @@
 
         private void PasswordBoxPassword_LostFocus(object sender, RoutedEventArgs e)
         {
+            App.Logger.Log("Trace", "LauncherController::PasswordBoxPassword_LostFocus");
             String password = _window.passwordBoxPassword.Password;
             if (string.IsNullOrEmpty(password))
             {
@@ -237,11 +252,13 @@
 
         private void PasswordBoxPassword_GotFocus(object sender, RoutedEventArgs e)
         {
+            App.Logger.Log("Trace", "LauncherController::PasswordBoxPassword_GotFocus");
             _window.passwordBoxPassword.Password = String.Empty;
         }
 
         private void LabelWebsite_MouseUp(object sender, MouseButtonEventArgs e)
         {
+            App.Logger.Log("Trace", "LauncherController::LabelWebsite_MouseUp");
             Process.Start(_config.WebUrl);
         }
 
@@ -255,6 +272,7 @@
 
         private void UpdateProgress(string status, bool progress = false, int value = 0, int min = 0, int max = 100)
         {
+            App.Logger.Log("Trace", "LauncherController::UpdateProgress");
             if (!string.IsNullOrEmpty(status))
             {
                 _window.labelStatus.Content = status;
@@ -278,31 +296,65 @@
             }
         }
 
-        private void UpdateVersion(ApiVersion version)
+        private void UpdateVersion(ApiVersion version, object state)
         {
+            App.Logger.Log("Trace", "LauncherController::UpdateVersion");
             foreach (GameBase game in _config.Games)
             {
                 game.SetVersion(version);
             }
+            GameBase selected = _config.SelectedGame;
+            int? selectedVersion = selected.GetClientVersion();
             App.Dispatch(() =>
             {
                 _window.labelLauncherVersion.Content = version.LauncherVersion;
                 _window.buttonDownloadClient.IsEnabled = true;
-                _window.labelLatestClientVersion.Content = _config.SelectedGame.GetLatestClientVersion();
+                _window.labelLatestClientVersion.Content = selected.GetLatestClientVersion();
+                _window.labelClientVersion.Content = selectedVersion == null ? "-" : selectedVersion.ToString();
             });
             if (App.VERSION < version.LauncherVersion)
             {
                 App.Dispatch(() =>
                 {
-                    DialogBox dialogBox = new DialogBox(_window.window, Translate("new_launcher_download_now"), Translate("launcher_update"));
+                    DialogBox dialogBox = new DialogBox(_window.window, Translate("new_launcher_download_now"), Translate("notice"), DialogBox.DialogButton.YES_NO);
                     if (dialogBox.ShowDialog() == true)
                     {
                         if (String.IsNullOrEmpty(version.LauncherUrl))
                         {
-                            App.DisplayError(Translate("could_not_find_url"), "LauncherController::UpdateVersion");
+                            App.DisplayError(Translate("could_not_find_url"), "LauncherController::UpdateVersion:Launcher");
                             return;
                         }
                         Process.Start(version.LauncherUrl);
+                    }
+                });
+            }
+            if (state is bool)
+            {
+                if ((bool)state)
+                {
+                    return;
+                }
+            }
+            if (selectedVersion == null)
+            {
+                App.DisplayMessage(Translate("unknown_client"), Translate("notice"));
+            }
+            else if (
+              selected.GetLatestClientVersion() != null
+              && selected.GetLatestClientVersion() > selectedVersion
+              )
+            {
+                App.Dispatch(() =>
+                {
+                    DialogBox dialogBox = new DialogBox(_window.window, Translate("new_client_download_now"), Translate("notice"), DialogBox.DialogButton.YES_NO);
+                    if (dialogBox.ShowDialog() == true)
+                    {
+                        if (String.IsNullOrEmpty(selected.GetDownloadUrl()))
+                        {
+                            App.DisplayError(Translate("could_not_find_url"), "LauncherController::UpdateVersion:Game");
+                            return;
+                        }
+                        Process.Start(selected.GetDownloadUrl());
                     }
                 });
             }
@@ -310,6 +362,7 @@
 
         private void ButtonClose_Click(object sender, RoutedEventArgs e)
         {
+            App.Logger.Log("Trace", "LauncherController::ButtonClose_Click");
             Exit(ExitCode.CLOSE_BUTTON);
         }
     }

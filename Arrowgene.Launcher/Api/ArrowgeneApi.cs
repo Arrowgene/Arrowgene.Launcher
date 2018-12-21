@@ -13,7 +13,7 @@ namespace Arrowgene.Launcher.Api
 
         }
 
-        public void Version(Action<ApiVersion> action)
+        public void Version(Action<ApiVersion, object> action, object state = null)
         {
             HttpRequest request = new HttpRequest();
             request.ResponseAction = (AsyncHttpResponseEventArgs result) =>
@@ -24,7 +24,7 @@ namespace Arrowgene.Launcher.Api
                 {
                     if (!response.IsError)
                     {
-                        action.Invoke(response.Content);
+                        action.Invoke(response.Content, state);
                         return;
                     }
                     App.Logger.Log(response.Message, "ArrowgeneApi::Version");
@@ -33,7 +33,7 @@ namespace Arrowgene.Launcher.Api
                 {
                     App.Logger.Log("Couldn't get version", "ArrowgeneApi::Version");
                 }
-                action.Invoke(null);
+                action.Invoke(null, state);
             };
             request.RequestAsync(API_VERSION_URL);
         }
