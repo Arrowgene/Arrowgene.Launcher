@@ -36,6 +36,7 @@
             _translations.Add("failed_to_resolve_ip", "找不到“{0}”的IP地址"); // {0} = https://domain.tld
             _translations.Add("download_from_mirror", "从文件服务器下载？ (快点)");
             _translations.Add("after_download_instruction", "下载完成后：提取存档并使用“设置游戏路径”按钮");
+            _translations.Add("window_mode", "窗口模式");
         }
 
         public override string FlagRessource => "pack://application:,,,/cn.png";

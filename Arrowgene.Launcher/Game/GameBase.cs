@@ -45,6 +45,7 @@ namespace Arrowgene.Launcher.Game
         public string Account { get; set; }
         public string Hash { get; set; }
         public bool RememberLogin { get; set; }
+        public bool WindowMode { get; set; }
 
         #endregion INI_SETTINGS
 
@@ -58,6 +59,7 @@ namespace Arrowgene.Launcher.Game
 
         public event EventHandler<SelectedGameEventArgs> SelectedGame;
 
+        public abstract bool SupportWindowMode { get; }
         public abstract GameType Type { get; }
         public abstract string SelectGameImage { get; }
         public abstract string SelectExecutablePattern { get; }
@@ -67,7 +69,6 @@ namespace Arrowgene.Launcher.Game
         public string ExecutablePath => Executable == null ? "" : Executable.FullName;
 
         public abstract void Start();
-
         public abstract void SetDefaultValues();
 
         public virtual IPAddress GetIpAddress()

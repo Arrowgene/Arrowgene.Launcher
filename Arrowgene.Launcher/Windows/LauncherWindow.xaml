@@ -43,6 +43,8 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -59,30 +61,31 @@
         -->
         <StackPanel Grid.Row="1" x:Name="stackPanelGames" Orientation="Horizontal" HorizontalAlignment="Center"/>
         <Button Grid.Row="2" x:Name="buttonStart" Content="{Binding Converter={StaticResource LanguageConverter}, ConverterParameter=start}" Style="{StaticResource CustomButtonStyle}"/>
-        <CheckBox Grid.Row="3" x:Name="checkBoxRememberLogin" Content="{Binding Converter={StaticResource LanguageConverter}, ConverterParameter=remember_login}" Style="{StaticResource CustomCheckBoxStyle}"/>
-        <TextBox Grid.Row="4" x:Name="textBoxAccount" Style="{StaticResource CustomTextBoxStyle}"/>
-        <PasswordBox Grid.Row="5" x:Name="passwordBoxPassword" Style="{StaticResource CustomPasswordBoxStyle}"/>
-        <StackPanel Grid.Row="6" Orientation="Horizontal">
+        <CheckBox Grid.Row="3" x:Name="checkBoxWindowMode" Content="{Binding Converter={StaticResource LanguageConverter}, ConverterParameter=window_mode}" Style="{StaticResource CustomCheckBoxStyle}"/>
+        <CheckBox Grid.Row="4" x:Name="checkBoxRememberLogin" Content="{Binding Converter={StaticResource LanguageConverter}, ConverterParameter=remember_login}" Style="{StaticResource CustomCheckBoxStyle}"/>
+        <TextBox Grid.Row="5" x:Name="textBoxAccount" Style="{StaticResource CustomTextBoxStyle}"/>
+        <PasswordBox Grid.Row="6" x:Name="passwordBoxPassword" Style="{StaticResource CustomPasswordBoxStyle}"/>
+        <StackPanel Grid.Row="7" Orientation="Horizontal">
             <Label Content="{Binding Converter={StaticResource LanguageConverter}, ConverterParameter=file_path}" Style="{StaticResource CustomLabelStyle}"/>
             <Label x:Name="labelGamePath" Content="-" Style="{StaticResource CustomLabelStyle}"/>
         </StackPanel>
-        <StackPanel Grid.Row="7" Orientation="Horizontal">
+        <StackPanel Grid.Row="8" Orientation="Horizontal">
             <Label Content="{Binding Converter={StaticResource LanguageConverter}, ConverterParameter=client_version}" Style="{StaticResource CustomLabelStyle}"/>
             <Label x:Name="labelClientVersion" Content="-" Style="{StaticResource CustomLabelStyle}"/>
             <Label Content="{Binding Converter={StaticResource LanguageConverter}, ConverterParameter=latest_client_version}" Style="{StaticResource CustomLabelStyle}"/>
             <Label x:Name="labelLatestClientVersion" Content="-" Style="{StaticResource CustomLabelStyle}"/>
         </StackPanel>
-        <Button Grid.Row="8" x:Name="buttonSetGameLocation" Content="{Binding Converter={StaticResource LanguageConverter}, ConverterParameter=set_game_location}" Style="{StaticResource CustomButtonStyle}"/>
-        <Button Grid.Row="9" x:Name="buttonDownloadClient" Content="{Binding Converter={StaticResource LanguageConverter}, ConverterParameter=download_client}" Style="{StaticResource CustomButtonStyle}"/>
-        <Button Grid.Row="10" x:Name="buttonCheckUpdates" Content="{Binding Converter={StaticResource LanguageConverter}, ConverterParameter=check_for_updates}" Style="{StaticResource CustomButtonStyle}"/>
-        <StackPanel Grid.Row="11" x:Name="stackPanelLanguages" Orientation="Horizontal" HorizontalAlignment="Center"/>
-        <ProgressBar Grid.Row="12" x:Name="progressBarDownload" VerticalAlignment="Center" Style="{StaticResource CustomProgressBarStyle}"/>
-        <Label Grid.Row="12" x:Name="labelStatus" Content="{Binding Converter={StaticResource LanguageConverter}, ConverterParameter=status}" Padding="4,0,4,0" VerticalAlignment="Center" Style="{StaticResource CustomLabelStyle}"/>
-        <Button Grid.Row="13" x:Name="buttonClose" Content="{Binding Converter={StaticResource LanguageConverter}, ConverterParameter=close}" Style="{StaticResource CustomButtonStyle}"/>
-        <StackPanel Grid.Row="14" Margin="5,0,5,0" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+        <Button Grid.Row="9" x:Name="buttonSetGameLocation" Content="{Binding Converter={StaticResource LanguageConverter}, ConverterParameter=set_game_location}" Style="{StaticResource CustomButtonStyle}"/>
+        <Button Grid.Row="10" x:Name="buttonDownloadClient" Content="{Binding Converter={StaticResource LanguageConverter}, ConverterParameter=download_client}" Style="{StaticResource CustomButtonStyle}"/>
+        <Button Grid.Row="11" x:Name="buttonCheckUpdates" Content="{Binding Converter={StaticResource LanguageConverter}, ConverterParameter=check_for_updates}" Style="{StaticResource CustomButtonStyle}"/>
+        <StackPanel Grid.Row="12" x:Name="stackPanelLanguages" Orientation="Horizontal" HorizontalAlignment="Center"/>
+        <ProgressBar Grid.Row="13" x:Name="progressBarDownload" VerticalAlignment="Center" Style="{StaticResource CustomProgressBarStyle}"/>
+        <Label Grid.Row="14" x:Name="labelStatus" Content="{Binding Converter={StaticResource LanguageConverter}, ConverterParameter=status}" Padding="4,0,4,0" VerticalAlignment="Center" Style="{StaticResource CustomLabelStyle}"/>
+        <Button Grid.Row="15" x:Name="buttonClose" Content="{Binding Converter={StaticResource LanguageConverter}, ConverterParameter=close}" Style="{StaticResource CustomButtonStyle}"/>
+        <StackPanel Grid.Row="16" Margin="5,0,5,0" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
             <Label Content="v." Style="{StaticResource CustomLabelStyle}" Margin="5,2,0,2" Padding="0"/>
             <Label x:Name="labelLauncherVersion" Content="-" Style="{StaticResource CustomLabelStyle}" Margin="0,2,0,2" Padding="0"/>
         </StackPanel>
-        <Label Grid.Row="14" x:Name="labelWebsite" Content="http://www.arrowgene.net" Cursor="Hand" HorizontalAlignment="Center" Style="{StaticResource CustomLabelStyle}"/>
+        <Label Grid.Row="17" x:Name="labelWebsite" Content="http://www.arrowgene.net" Cursor="Hand" HorizontalAlignment="Center" Style="{StaticResource CustomLabelStyle}"/>
     </Grid>
 </Window>

@@ -36,6 +36,7 @@
             _translations.Add("failed_to_resolve_ip", "No se puede encontrar la dirección IP de '{0}'"); // {0} = https://domain.tld
             _translations.Add("download_from_mirror", "Descargar desde el servidor de archivos? (Más rápido)");
             _translations.Add("after_download_instruction", "Una vez completada la descarga: Extraiga el archivo y use el botón 'Establecer ubicación del juego'");
+            _translations.Add("window_mode", "Modo ventana");
         }
 
         public override string FlagRessource => "pack://application:,,,/es.png";

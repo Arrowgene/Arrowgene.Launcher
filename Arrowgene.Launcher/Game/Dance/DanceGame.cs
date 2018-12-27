@@ -15,6 +15,8 @@ namespace Arrowgene.Launcher.Game.Dance
         public override string SelectGameImage => "pack://application:,,,/dance.png";
         public override string SelectExecutablePattern => "client.bin|client.bin";
 
+        public override bool SupportWindowMode => false;
+
         public override void SetDefaultValues()
         {
             Host = "server.arrowgene.net";

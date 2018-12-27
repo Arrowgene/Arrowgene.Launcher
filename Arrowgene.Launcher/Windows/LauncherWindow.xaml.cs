@@ -24,6 +24,7 @@ namespace Arrowgene.Launcher.Windows
         Button ILauncherWindow.buttonClose => this.buttonClose;
         Button ILauncherWindow.buttonCheckUpdates => this.buttonCheckUpdates;
         CheckBox ILauncherWindow.checkBoxRememberLogin => this.checkBoxRememberLogin;
+        CheckBox ILauncherWindow.checkBoxWindowMode => this.checkBoxWindowMode;
         TextBox ILauncherWindow.textBoxAccount => this.textBoxAccount;
         PasswordBox ILauncherWindow.passwordBoxPassword => this.passwordBoxPassword;
         ProgressBar ILauncherWindow.progressBarDownload => this.progressBarDownload;

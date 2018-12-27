@@ -25,6 +25,7 @@
         private const string GAME_HASH = "Hash";
         private const string GAME_HOST = "Host";
         private const string GAME_PORT = "Port";
+        private const string GAME_WINDOW_MODE = "Window";
 
         private IniConfigSource _iniFile;
 
@@ -76,6 +77,7 @@
                     {
                         game.Executable = App.CreateFileInfo(gameSection.Get(GAME_EXE));
                         game.RememberLogin = gameSection.GetBoolean(GAME_REMEMBER_LOGIN);
+                        game.WindowMode = gameSection.GetBoolean(GAME_WINDOW_MODE);
                         game.Account = gameSection.Get(GAME_ACCOUNT);
                         game.Hash = gameSection.Get(GAME_HASH);
                         game.Host = gameSection.Get(GAME_HOST);
@@ -141,6 +143,7 @@
                     }
                     gameSection.Set(GAME_EXE, game.ExecutablePath);
                     gameSection.Set(GAME_REMEMBER_LOGIN, game.RememberLogin);
+                    gameSection.Set(GAME_WINDOW_MODE, game.WindowMode);
                     gameSection.Set(GAME_ACCOUNT, game.Account);
                     gameSection.Set(GAME_HASH, game.Hash);
                     gameSection.Set(GAME_HOST, game.Host);

@@ -19,6 +19,7 @@
         Button buttonCheckUpdates { get; }
         ProgressBar progressBarDownload { get; }
         CheckBox checkBoxRememberLogin { get; }
+        CheckBox checkBoxWindowMode{ get; }
         TextBox textBoxAccount { get; }
         PasswordBox passwordBoxPassword { get; }
         StackPanel stackPanelGames { get; }

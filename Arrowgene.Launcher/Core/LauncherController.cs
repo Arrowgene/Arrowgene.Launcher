@@ -61,9 +61,11 @@
             _window.labelGamePath.Content = game.ExecutablePath;
             _window.labelGamePath.ToolTip = game.ExecutablePath;
             _window.checkBoxRememberLogin.IsChecked = game.RememberLogin;
+            _window.checkBoxWindowMode.IsChecked = game.WindowMode;
             _window.passwordBoxPassword.Password = game.Hash;
             _window.textBoxAccount.Text = game.Account;
             _window.labelLatestClientVersion.Content = game.GetLatestClientVersion();
+            _window.checkBoxWindowMode.Visibility = game.SupportWindowMode ? Visibility.Visible : Visibility.Collapsed;
             if (game != oldGame)
             {
                 oldGame.SelectGameButton.IsEnabled = true;
@@ -123,6 +125,8 @@
             _window.window.MouseDown += Window_MouseDown;
             _window.checkBoxRememberLogin.Checked += CheckBoxRememberLogin_CheckedChanged;
             _window.checkBoxRememberLogin.Unchecked += CheckBoxRememberLogin_CheckedChanged;
+            _window.checkBoxWindowMode.Checked += CheckBoxWindowMode_CheckedChanged;
+            _window.checkBoxWindowMode.Unchecked += CheckBoxWindowMode_CheckedChanged;
             _window.passwordBoxPassword.GotFocus += PasswordBoxPassword_GotFocus;
             _window.passwordBoxPassword.LostFocus += PasswordBoxPassword_LostFocus;
             _window.textBoxAccount.LostFocus += TextBoxAccount_LostFocus;
@@ -193,6 +197,11 @@
         {
             App.Logger.Log("Trace", "LauncherController::CheckBoxRememberLogin_CheckedChanged");
             UpdateRememberLogin();
+        }
+        private void CheckBoxWindowMode_CheckedChanged(object sender, RoutedEventArgs e)
+        {
+            App.Logger.Log("Trace", "LauncherController::CheckBoxWindowMode_CheckedChanged");
+            _config.SelectedGame.WindowMode = _window.checkBoxWindowMode.IsChecked == true;
         }
 
         private void UpdateRememberLogin()
