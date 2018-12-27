@@ -6,7 +6,7 @@ namespace Arrowgene.Launcher.Game.Ez2On
 {
     public class Ez2OnGame : GameBase
     {
-        public const bool DEFAULT_WINDOW_MODE = true;
+        public const bool DEFAULT_WINDOW_MODE = false;
 
         public override GameType Type => GameType.Ez2on;
         public override string SelectGameImage => "pack://application:,,,/ez2on.png";
@@ -106,6 +106,7 @@ namespace Arrowgene.Launcher.Game.Ez2On
             Ez2OnPatcher patcher = new Ez2OnPatcher(Executable);
             patcher.SavePatches(ip.ToString(), Port, true);
             SetWindowMode(WindowMode);
+            App.Logger.Log(string.Format("Starting Session: {0} Account: {1}", session, account), "Ez2OnGame::Launch");
             string arguments = string.Format("{0}|{1}|{2}|{3}", session, account, hash, 9999);
             StartProcess(Executable.FullName, arguments, Executable.DirectoryName);
         }

@@ -135,7 +135,7 @@ namespace Arrowgene.Launcher.Game
 
         protected void StartProcess(string executablePath, string arguments, string workDir)
         {
-            App.Logger.Log(string.Format("Executable: {0} Arguments: {1} WorkDir: {2}", executablePath, arguments, workDir), "GameBase::StartProcess");
+            App.Logger.Log(string.Format("Executable: {0} WorkDir: {1}", executablePath, workDir), "GameBase::StartProcess");
             ProcessStartInfo game = new ProcessStartInfo();
             game.FileName = executablePath;
             game.WorkingDirectory = workDir;
