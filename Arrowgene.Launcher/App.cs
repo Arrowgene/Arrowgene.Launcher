@@ -29,47 +29,54 @@
         [STAThread]
         public static void Main()
         {
-            _logger = new Logger(GetLogPath());
-            _logger.Log(string.Format("Startup - Version: {0}", VERSION), "App::Main");
-            _launcherWindow = new LauncherWindow();
-            _logger.Log(string.Format("Create LauncherWindow"), "App::Main");
-
-            string configPath = GetConfigPath();
-            _logger.Log(string.Format("Get ConfigPath: {0}", configPath), "App::Main");
-
-            FileInfo configFile = CreateFileInfo(configPath);
-            _logger.Log(string.Format("Create File Info"), "App::Main");
-
-            if (configFile == null)
+            try
             {
-                DisplayError(string.Format("The path: {0} is invalid.", configPath), "LauncherController::Window_Loaded");
-                Environment.Exit((int)ExitCode.CONFIG_PATH);
+                _logger = new Logger(GetLogPath());
+                _logger.Log(string.Format("Startup - Version: {0}", VERSION), "App::Main");
+                _launcherWindow = new LauncherWindow();
+                _logger.Log(string.Format("Create LauncherWindow"), "App::Main");
+
+                string configPath = GetConfigPath();
+                _logger.Log(string.Format("Get ConfigPath: {0}", configPath), "App::Main");
+
+                FileInfo configFile = CreateFileInfo(configPath);
+                _logger.Log(string.Format("Create File Info"), "App::Main");
+
+                if (configFile == null)
+                {
+                    DisplayError(string.Format("The path: {0} is invalid.", configPath), "LauncherController::Window_Loaded");
+                    Environment.Exit((int)ExitCode.CONFIG_PATH);
+                }
+                Configuration config = new Configuration(configPath);
+                _logger.Log(string.Format("Init Configuration"), "App::Main");
+
+                if (!config.Load())
+                {
+                    Environment.Exit((int)ExitCode.LOAD_SETTINGS);
+                }
+
+                _logger.Log(string.Format("Config Loaded"), "App::Main");
+
+                Translator.Instance.ChangeLanguage(config.SelectedLanguage);
+
+                _logger.Log(string.Format("Change Language"), "App::Main");
+                Translator.Instance.OnChange = (LanguageType languageType) =>
+                {
+                    config.SelectedLanguage = languageType;
+                    DisplayMessage(Translator.Instance.Translate("please_restart"), Translator.Instance.Translate("notice"), App.Window);
+                };
+                LauncherController launcherController = new LauncherController(_launcherWindow, config);
+
+                _logger.Log(string.Format("Init LauncherController"), "App::Main");
+                App launcher = new App();
+
+                _logger.Log(string.Format("Init App"), "App::Main");
+                launcher.Run(_launcherWindow);
             }
-            Configuration config = new Configuration(configPath);
-            _logger.Log(string.Format("Init Configuration"), "App::Main");
-
-            if (!config.Load())
+            catch (Exception ex)
             {
-                Environment.Exit((int)ExitCode.LOAD_SETTINGS);
+                MessageBox.Show(ex.ToString());
             }
-
-            _logger.Log(string.Format("Config Loaded"), "App::Main");
-
-            Translator.Instance.ChangeLanguage(config.SelectedLanguage);
-
-            _logger.Log(string.Format("Change Language"), "App::Main");
-            Translator.Instance.OnChange = (LanguageType languageType) =>
-            {
-                config.SelectedLanguage = languageType;
-                DisplayMessage(Translator.Instance.Translate("please_restart"), Translator.Instance.Translate("notice"), App.Window);
-            };
-            LauncherController launcherController = new LauncherController(_launcherWindow, config);
-
-            _logger.Log(string.Format("Init LauncherController"), "App::Main");
-            App launcher = new App();
-
-            _logger.Log(string.Format("Init App"), "App::Main");
-            launcher.Run(_launcherWindow);
         }
 
         public static string GetApplicationDir()

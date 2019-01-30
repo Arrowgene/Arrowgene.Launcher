@@ -21,6 +21,7 @@
 
         public LauncherController(ILauncherWindow launcherWindow, Configuration config)
         {
+            App.Logger.Log("Trace", "LauncherController::ctor");
             _window = launcherWindow;
             _window.window.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             _window.window.Loaded += Window_Loaded;
