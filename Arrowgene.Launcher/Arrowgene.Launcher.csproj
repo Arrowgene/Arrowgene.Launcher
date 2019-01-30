@@ -155,6 +155,7 @@
     <Compile Include="Api\ApiResponse.cs" />
     <Compile Include="Api\ApiVersion.cs" />
     <Compile Include="Common\KeyValue.cs" />
+    <Compile Include="Common\OSType.cs" />
     <Compile Include="Game\Ez2On\Ez2OnPatcher.cs" />
     <Compile Include="Game\GamePatcher.cs" />
     <Compile Include="Game\GamePatch.cs" />
@@ -197,6 +198,7 @@
     <Compile Include="Ini\Util\ArgvParser.cs" />
     <Compile Include="Ini\Util\OrderedList.cs" />
     <Compile Include="Ini\Util\OrderedListEnumerator.cs" />
+    <Compile Include="Common\OSVersion.cs" />
     <Compile Include="Translation\LanguageConverter.cs" />
     <Compile Include="Translation\Languages\Korean.cs" />
     <Compile Include="Translation\Languages\Spanish.cs" />

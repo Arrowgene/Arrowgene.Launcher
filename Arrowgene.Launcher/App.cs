@@ -1,5 +1,6 @@
 ﻿namespace Arrowgene.Launcher
 {
+    using Arrowgene.Launcher.Common;
     using Arrowgene.Launcher.Core;
     using Arrowgene.Launcher.Translation;
     using Arrowgene.Launcher.Windows;
@@ -22,9 +23,11 @@
 
         public static Logger Logger => _logger;
         public static LauncherWindow Window => _launcherWindow;
+        public static OSType _osType = OSVersionInfo.GetOsType();
 
         private static Logger _logger;
         private static LauncherWindow _launcherWindow;
+        private static OSType OSType = _osType;
 
         [STAThread]
         public static void Main()
@@ -147,13 +150,29 @@
 
         public static string GetConfigPath()
         {
-            string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            string folderPath;
+            if (OSType < OSType.Windows_Vista)
+            {
+                folderPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            }
+            else
+            {
+                folderPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            }
             return Path.Combine(folderPath, SETTINGS_FILE_NAME);
         }
 
         public static string GetLogPath()
         {
-            string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            string folderPath;
+            if (OSType < OSType.Windows_Vista)
+            {
+                folderPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            }
+            else
+            {
+                folderPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            }
             return Path.Combine(folderPath, LOG_FILE_NAME);
         }
 

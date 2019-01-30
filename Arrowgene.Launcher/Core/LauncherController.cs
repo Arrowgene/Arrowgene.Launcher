@@ -305,6 +305,10 @@
         private void UpdateVersion(ApiVersion version, object state)
         {
             App.Logger.Log("Trace", "LauncherController::UpdateVersion");
+            if(version == null)
+            {
+                return;
+            }
             foreach (GameBase game in _config.Games)
             {
                 game.SetVersion(version);
