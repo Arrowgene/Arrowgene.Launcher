@@ -2,7 +2,8 @@
 {
     public enum GameType
     {
-        Ez2on = 1,
-        Dance = 2
+        Ez2OnR13 = 13,
+        Ez2OnR14 = 14,
+        Dance = 20
     }
 }

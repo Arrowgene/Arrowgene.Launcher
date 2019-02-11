@@ -67,8 +67,11 @@
                         case GameType.Dance:
                             game = new DanceGame();
                             break;
-                        case GameType.Ez2on:
-                            game = new Ez2OnGame();
+                        case GameType.Ez2OnR13:
+                            game = new Ez2OnR13Game();
+                            break;
+                        case GameType.Ez2OnR14:
+                            game = new Ez2OnR14Game();
                             break;
                         default: continue;
                     }

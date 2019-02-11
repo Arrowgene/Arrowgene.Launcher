@@ -84,7 +84,7 @@ namespace Arrowgene.Launcher.Game
                 {
                     return _version.DanceVersion;
                 }
-                if (Type == GameType.Ez2on)
+                if (Type == GameType.Ez2OnR14 || Type == GameType.Ez2OnR13)
                 {
                     return _version.Ez2OnVersion;
                 }
@@ -100,7 +100,7 @@ namespace Arrowgene.Launcher.Game
                 {
                     return _version.DanceUrl;
                 }
-                if (Type == GameType.Ez2on)
+                if (Type == GameType.Ez2OnR14 || Type == GameType.Ez2OnR13)
                 {
                     return _version.Ez2OnUrl;
                 }
@@ -115,7 +115,7 @@ namespace Arrowgene.Launcher.Game
                 {
                     return _version.DanceUrlMirror;
                 }
-                if (Type == GameType.Ez2on)
+                if (Type == GameType.Ez2OnR14 || Type == GameType.Ez2OnR13)
                 {
                     return _version.Ez2OnUrlMirror;
                 }
@@ -133,7 +133,7 @@ namespace Arrowgene.Launcher.Game
             _version = version;
         }
 
-        protected void StartProcess(string executablePath, string arguments, string workDir)
+        protected Process StartProcess(string executablePath, string arguments, string workDir)
         {
             App.Logger.Log(string.Format("Executable: {0} WorkDir: {1}", executablePath, workDir), "GameBase::StartProcess");
             ProcessStartInfo game = new ProcessStartInfo();
@@ -142,6 +142,7 @@ namespace Arrowgene.Launcher.Game
             game.Arguments = arguments;
             game.UseShellExecute = false;
             Process process = Process.Start(game);
+            return process;
         }
 
         private void SelectGameButton_Click(object sender, RoutedEventArgs e)

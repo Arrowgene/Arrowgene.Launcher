@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>Arrowgene.Launcher</RootNamespace>
     <AssemblyName>Arrowgene.Launcher</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -27,7 +27,8 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -54,7 +55,8 @@
     <StartupObject>Arrowgene.Launcher.App</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>app.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>false</SignAssembly>
@@ -156,6 +158,8 @@
     <Compile Include="Api\ApiVersion.cs" />
     <Compile Include="Common\KeyValue.cs" />
     <Compile Include="Common\OSType.cs" />
+    <Compile Include="Game\Ez2On\Ez2OnR13Game.cs" />
+    <Compile Include="Game\Ez2On\Ez2OnR14Game.cs" />
     <Compile Include="Game\Ez2On\Ez2OnPatcher.cs" />
     <Compile Include="Game\GamePatcher.cs" />
     <Compile Include="Game\GamePatch.cs" />
