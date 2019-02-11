@@ -19,7 +19,7 @@
         private const string SETTINGS_FILE_NAME = "arrowgene_launcher.settings";
         private const string LOG_FILE_NAME = "arrowgene_launcher.log";
 
-        public static int VERSION = 1;
+        public static int VERSION = 2;
 
         public static Logger Logger => _logger;
         public static LauncherWindow Window => _launcherWindow;
