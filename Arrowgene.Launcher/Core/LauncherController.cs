@@ -317,7 +317,7 @@
             int? selectedVersion = selected.GetClientVersion();
             App.Dispatch(() =>
             {
-                _window.labelLauncherVersion.Content = version.LauncherVersion;
+                _window.labelLauncherVersion.Content = App.VERSION;
                 _window.buttonDownloadClient.IsEnabled = true;
                 _window.labelLatestClientVersion.Content = selected.GetLatestClientVersion();
                 _window.labelClientVersion.Content = selectedVersion == null ? "-" : selectedVersion.ToString();

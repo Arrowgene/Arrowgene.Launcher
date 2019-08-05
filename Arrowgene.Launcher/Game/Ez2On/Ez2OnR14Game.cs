@@ -53,6 +53,7 @@ namespace Arrowgene.Launcher.Game.Ez2On
         private IntPtr mapBuffer;
 
         public override GameType Type => GameType.Ez2OnR14;
+        public override bool SupportWindowMode => false;
 
         public override void Start()
         {
@@ -97,7 +98,7 @@ namespace Arrowgene.Launcher.Game.Ez2On
             int errorCode;
             mapFile = CreateFileMapping(INVALID_HANDLE_VALUE, null, FileMapProtection.PageExecuteReadWrite, 0, MAP_SIZE, MAP_NAME);
             errorCode = Marshal.GetLastWin32Error();
-            if(errorCode != 0)
+            if (errorCode != 0)
             {
                 App.Logger.Log($"Error: {errorCode}", "Ez2OnR14Game::MapNative:CreateFileMapping");
             }

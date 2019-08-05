@@ -23,6 +23,11 @@ namespace Arrowgene.Launcher.Game.Ez2On
         public void SetWindowMode(bool window)
         {
             App.Logger.Log("Trace", "Ez2OnGame::SetWindowMode");
+            if (!SupportWindowMode)
+            {
+                App.Logger.Log("Not Supported", "Ez2OnGame::SetWindowMode");
+                return;
+            }
             if (!ExecutableExists)
             {
                 return;
@@ -72,6 +77,6 @@ namespace Arrowgene.Launcher.Game.Ez2On
             int.TryParse(value, out int val);
             return val == 1;
         }
-        
+
     }
 }
