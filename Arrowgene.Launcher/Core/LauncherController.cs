@@ -210,16 +210,12 @@
             App.Logger.Log("Trace", "LauncherController::UpdateRememberLogin");
             if (_window.checkBoxRememberLogin.IsChecked == true)
             {
-                _window.textBoxAccount.IsEnabled = true;
-                _window.passwordBoxPassword.IsEnabled = true;
                 _config.SelectedGame.RememberLogin = true;
             }
             else
             {
                 _window.passwordBoxPassword.Password = String.Empty;
                 _window.textBoxAccount.Text = String.Empty;
-                _window.textBoxAccount.IsEnabled = false;
-                _window.passwordBoxPassword.IsEnabled = false;
                 _config.SelectedGame.RememberLogin = false;
                 _config.SelectedGame.Account = String.Empty;
                 _config.SelectedGame.Hash = String.Empty;
